@@ -4,12 +4,11 @@
   "private": true,
   "description": "Landing page de vendas - indicadores para IBOV, WIN FUT e DOL FUT",
   "scripts": {
-    "dev": "tailwindcss -i ./src/input.css -o ./assets/css/output.css --watch",
-    "build": "tailwindcss -i ./src/input.css -o ./assets/css/output.css --minify",
-    "serve": "python3 -m http.server 8080"
+    "dev": "tailwindcss -i ./src/input.css -o ./public/assets/css/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./public/assets/css/output.css --minify",
+    "serve": "cd public && python3 -m http.server 8080"
   },
   "devDependencies": {
-    "playwright": "^1.62.1",
     "tailwindcss": "^3.4.19"
   }
 }
