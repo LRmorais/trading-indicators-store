@@ -18,21 +18,29 @@ Todo o conteúdo abaixo é **placeholder profissional** e precisa ser substituí
 
 | O quê | Onde | Arquivo |
 |---|---|---|
-| Número de WhatsApp | `WHATSAPP_NUMBER` (const no topo) e botão flutuante | `assets/js/main.js`, `index.html` |
-| Nome da marca, e-mail, endereço, CNPJ | Header, footer | `index.html` |
-| Preços dos planos | Seção `#planos` | `index.html` |
-| Depoimentos | Seção `#depoimentos` (marcados com comentário) | `index.html` |
-| Números de prova social (traders atendidos, % assertividade, etc.) | Seção de stats e seção de performance | `index.html` |
-| Redes sociais (links `href="#"`) | Footer | `index.html` |
-| Aviso legal | Rodapé — revisar com jurídico antes de publicar | `index.html` |
+| Número de WhatsApp | `WHATSAPP_NUMBER` (const no topo) e botão flutuante | `public/assets/js/main.js`, `public/index.html` |
+| Nome da marca, e-mail, endereço, CNPJ | Header, footer | `public/index.html` |
+| Preços dos planos | Seção `#planos` | `public/index.html` |
+| Depoimentos | Seção `#depoimentos` (marcados com comentário) | `public/index.html` |
+| Números de prova social (traders atendidos, % assertividade, etc.) | Seção de stats e seção de performance | `public/index.html` |
+| Redes sociais (links `href="#"`) | Footer | `public/index.html` |
+| Aviso legal | Rodapé — revisar com jurídico antes de publicar | `public/index.html` |
 
 ## Estrutura
 
-- `index.html` — página única (nav, hero, prova social, problema/solução, indicadores, mercados, como funciona, performance, depoimentos, planos, FAQ, formulário de lead, footer)
-- `src/input.css` — fonte Tailwind (tokens de cor, componentes)
-- `assets/css/output.css` — CSS compilado (gerado, não editar direto)
-- `assets/js/main.js` — menu mobile, accordion FAQ, animações on-scroll, validação e envio do formulário de lead via WhatsApp
+Tudo que é servido publicamente fica em `public/` (é o Output Directory configurado no `vercel.json` — obrigatório para o deploy funcionar na Vercel):
+
+- `public/index.html` — página única (nav, hero, prova social, problema/solução, indicadores, mercados, como funciona, performance, depoimentos, planos, FAQ, formulário de lead, footer)
+- `public/assets/css/output.css` — CSS compilado (gerado, não editar direto)
+- `public/assets/js/main.js` — menu mobile, accordion FAQ, animações on-scroll, validação e envio do formulário de lead via WhatsApp
+- `src/input.css` — fonte Tailwind (tokens de cor, componentes) — fica fora de `public/` pois não precisa ser servida diretamente
+
+## Deploy na Vercel
+
+1. Suba o repositório para o GitHub (já configurado como remoto `origin`).
+2. Importe o repositório na Vercel.
+3. A Vercel detecta o `vercel.json` automaticamente: roda `npm run build` (compila o Tailwind) e publica a pasta `public/`. Nenhuma configuração manual extra é necessária.
 
 ## Formulário de lead
 
-O formulário não tem backend: ao enviar, monta uma mensagem com os dados preenchidos e abre o WhatsApp (`wa.me`) em nova aba. Para conectar a um CRM/planilha, adicione uma chamada `fetch` antes do `window.open` em `assets/js/main.js`.
+O formulário não tem backend: ao enviar, monta uma mensagem com os dados preenchidos e abre o WhatsApp (`wa.me`) em nova aba. Para conectar a um CRM/planilha, adicione uma chamada `fetch` antes do `window.open` em `public/assets/js/main.js`.
